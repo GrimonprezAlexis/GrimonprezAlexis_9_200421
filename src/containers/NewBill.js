@@ -17,6 +17,16 @@ export default class NewBill {
   }
   handleChangeFile = e => {
     const file = this.document.querySelector(`input[data-testid="file"]`).files[0]
+    var ext = e.target.value.match(/\.([^\.]+)$/)[1];
+    switch (ext) {
+      case 'jpeg':
+      case 'jpg':
+      case 'png':
+        alert('Format allowed (jpeg, jpg, png)');
+        break;
+      default:
+        alert('Format not allowed (jpeg, jpg, png)');
+    }
     const filePath = e.target.value.split(/\\/g)
     const fileName = filePath[filePath.length-1]
     this.firestore
